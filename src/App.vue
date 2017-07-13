@@ -11,14 +11,17 @@
           </div>
         </section>
         <section>
-          <section>全栈工程师</section>
-          <section>全栈工程师是指掌握多种技能，并能利用多种技能独立完成产品的人。</section>
-          <section><img src="./assets/full-stack.jpg"  /></section>
+          <section>
+          <div>全栈工程师</div>
+          <div style="height:15em"><img src="./assets/node.jpg" /></div>
+          </section>
         </section>
 				<section>
-          <section>{{ 'Vertical Slide 1' | date('...') }}</section>
-			    <section>Vertical Slide 2</section>
-          <section>Vertical Slide 3</section>
+   <!--  <section>{{ 'Vertical Slide 1' | date('...') }}</section> -->
+			    <section>前后端都采用JavaScript的好处</section>
+          <section>1.无需切换语言环境，JavaScript可以做到后端语言能做的绝大部分事情</section>
+          <section>2.数据可以很好的实现跨前后端使用（使用json）</section>
+          <section>3.一些业务(如模板渲染)不需要纠结在前端还是后端处理</section>
           <page-item></page-item>
         </section>
         <section>
@@ -97,8 +100,18 @@ body{
     height: 0;
     visibility: hidden;
 }
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
 .reveal div.fon14{
   font-size: 0.8em;
+}
+
+.reveal div.fon16{
+  font-size: 1.2em;
 }
 
 .icon-btn{
@@ -125,6 +138,8 @@ body{
   background-size: cover;
 
 }
+
+
 
 
 
