@@ -1,0 +1,123 @@
+MEANR (MongoDB, Express, AngularJS, Node.js, Redis) stack with Chef for DevOps and Capistrano for Deployment
+
+全栈开发的不同之处
+
+开发环境也可以不用mock，直接提供后端server服务，这也是全栈开发和之前前端开发的不同之处。 可以把node后端当成中间层，请求旧后端并包装后返回。
+
+
+
+
+MENU
+Home
+SUBSCRIBE
+MENU
+顺顺的前端技术分享
+15 APRIL 2016
+顺顺有非常多的项目，前端的所使用的技术架构也是多样的。
+
+agenda:
+
+架构篇
+前端MVC
+后端MVC
+前后混合MVC
+预处理语言
+构建篇
+前端库
+其他
+前端MVC：
+现在流行一个名字，即网站软件或者web app，软件的特点是：实时，体验佳，复杂。于是就诞生了前端MVC，前端MVC通过在浏览器端进行路由分发，不同路由对应不同的功能，甚至可以细致到某个功能内部的一个点，前端MVC的好处是，路由切换没有卡顿感，无刷新，模版文件在网站加载时就已经下载完毕，因此页面切换速度飞快。顺顺主要用了angularjs和reactjs。由于页面不再由服务器端吐出，前端与后端交互使用json数据，我们的数据接口符合RESTful规范。
+
+使用到的项目有：CRP（顾问，学生协同工作软件），BI（内部的数据分析软件），YM（移民顾问端软件）等
+
+后端MVC
+所有的行业都脱离不了网络推广这个环节，这个环节最重要的是：SEO 
+前端MVC由于是在浏览器端渲染时才呈现数据，因此没法满足SEO的需求。解决这个问题的方法就是使用传统的后端MVC方式。在这里，顺顺与传统的方式也有区别，我们会用php或者nodejs做一个中间层，这个中间层只负责路由分发与数据渲染，数据由API后台提供。
+
+难点：路由分发（正则匹配，nginx转发），页面性能（cache-control，etag，redis缓存接口，页面静态化，cdn），兼容性（设计规避，兼容性代码，切图切图切图）
+
+使用到的项目有：官网，留学网，SEM页面
+
+前后混合MVC
+前端MVC的弊端是：
+
+当业务逻辑很复杂的时候，会导致页面太重，性能变差
+js，css文件过大，流量增大。例如：当用户只想简单的查看一下个人信息，却加载了视频播放，富文本编辑，图标插件的代码。
+解决这些问题的方法是，在原有前端MVC基础上，在增加后端路由，将比较对立的模块从后端拆分好路由，每个模块内部的页面跳转使用前端MVC。
+
+使用到的项目有：统一登录
+
+统一登录的登录，注册路由都是用后台直接分发，因为这些页面比较简单，并且对性能要求极高，大部分使用场景是打开登录界面后，登录成功就跳转到对应的系统中，因此，没有必要把其他模块的代码加载进俩，并且，登录的使用场景有可能是地铁中等网络条件较差的地方，所以减少整个响应的大小很有必要。
+
+预处理语言
+预处理语言是为了弥补现有js或者css的不足，预处理语言必须处理过后才能被浏览器正确理解，处理过程可以在浏览器端，也可以在网站发布前。 反例：coffeescript 预处理语言的选择一定要随大流，简单，与现有的语言差异较小，并且有前途。coffeescript的弊端是语法使用缩进来区分代码块，个人开发者维护。之前BI代码使用的coffeescript
+
+目前我们使用的是： 
+es6，它的好处是：兼容现有es5语法，是下一代标准，尽管目前没普及，但是总有一天会普及，学习它不会亏
+
+less，scss：都是css的预处理语言，bootstrap 3是用less写的，4是用scss写的，语法比较相似，兼容纯css，嵌套与变量的思想也符合css 4。sass与scss的区别：前者用缩进来区分块，本质一样
+
+构建篇
+构建包括：依赖管理，js，css注入，js，css代码最小化，合并，js代码混淆，图片压缩，全局变量替换，cdn替换，assets版本号，自动测试，自动部署。 
+使用的工具：yoeman，gulp，grunt，webpack，bower，npm，github hook，script(不局限于nodejs)
+
+# 替换文件内的字符串
+find . -type f -exec perl -i -p -e 's###' {} \;  
+# 批量转化图片
+for i in $(ls *.jpg); do convert $i -strip -resize 750 converted/$i; done  
+# 批量重命名文件
+for x in *; do y=$(echo $x | sed -e 's/^discussion/forum/'); mv $x $y; done  
+前端库
+angularjs: 入门容易，功能强大，适合做交互逻辑复杂的app 
+reactjs: 轻量级，高大上，适合做小而美的app 
+jquery: 可能是最好的前端库，不多说了 
+lodash/underscore: 常用的array操作，utilities 
+momentjs: 时间处理库，库比较大，如果在前端使用，请勿引用整个库 
+highchartjs: 图表插件，各种图表 
+qs: 用来解析或者拼装query string，很多项目都自己写一个拼装方法，或者直接手动拼装，bug百出，费时间 
+font-awesome: 字体图标库，比较庞大，项目中应该自己制作字体。 
+bootstrap: 样式库，ui插件库 
+restangular: angularjs下的ajax库
+
+其他
+apiary.io 在线编辑api文档，文档写好，mock api和api测试也对应生成了。
+http://www.iconfont.cn/ 阿里妈妈，搜索图标，在线生成字体，请勿使用在线生成字体的功能，无法进行很好的代码管理。
+测试：web app如同软件一样，需要进行编写测试代码，目前还没有项目大规模开始施行，之后哪位前端推行这个立刻performance++，个人比较推荐mocha，统一登录中使用mocha+babel 可以直接测试es6代码。
+git workflow：目前，由于大部分项目开发人员只有1-2个，有的人会觉得没有必要，这个是误区，就算一个人也应该执行git workflow，可以保障代码安全，feature bug分离，为后人造福。具体如下：master为在线分支，develop为主开发分支，feature开发应该从develop切分支出去进行开发，紧急bug修复从master切，一般bug修复从develop切，只有测试通过的feature才合并到develop分支，发布的时候从develop切一个发布分支，上与发布环境。不影响其他开发。发布成功后，需要把预发布分支合并到master与develop分支上。所有合并都发pr。
+cagegong
+Read more posts by this author.
+
+分享本文
+   
+Docker学习笔记1
+由于一直在折腾服务器，每次折腾都要安装redis，mongo，nodejs，nginx，ss，pptpd，非常耗时。于是便开始学习Docker。 Docker初体验 原本更换服务器需要配置一天，而且不同厂家的vps还会有差异，需要单独去寻找解决方案。这次偶然发现scaleway家的vps，只需要2.99欧一个月，4核CPU，2G RAM，…
+微信页面开发的那些坑
+做一个微信站。简单的几个功能，在ios的微信中体验甚好，然后到了安卓微信中，目不忍视。现在就来细数微信开发中那些坑。 1. ios端微信不支持js设置页面title 在ios下。title在页面刚加载的时候就已经确定了。在页面js中 document.title='title' 并不能解决问题。 解决方案如下： es 6 版…
+TheTechGuys ? 2017Proudly published with Ghost
+
+------、
+、全栈的最后一公里
+全栈这个词很敏感，有人不认同有人无所谓，对我而言，它就像是一个 H5 工程师一样，只是表述了一种印象或者概念，具体严谨与否不重要，因为跟人沟通，心领神会即可不必强究细节。
+那么在学习 Nodejs 的过程中，有一道门槛是无论如何也逃不过去的，那就是 服务器的选购配置，域名的解析指向，Nodejs 项目的部署等这些偏运维方向，这些让很多新人甚至是已经工作的工程师困扰，自己去琢磨太花费时间，不去琢磨，始终没有能力凭自己双手，让一个产品上线或者让自己的一个想法实现到互联网上，不论是成为独立站长，还是只是让朋友同学访问，于是我把这些总结了一下，以以上几个项目为例，大概分为如下几个步骤：
+部署方案规划
+待部署项目分析
+选购及备案域名
+厂商对比与选配阿里云服务器
+初步 SSH 无密码登录连接和配置
+搭建 Nodejs/MongoDB/Nginx 环境
+配置 IPTables/Fail2Ban 防火墙及主动防御
+域名 DNS 转移及 A 记录/CNAME 解析配置
+MongoDB 角色配置与安全规则设置
+线上 MongoDB 单表单库导入导出与跨机迁移备份上传
+PM2 发布环境配置
+服务器与 Git 仓库读写配置
+PM2 一键部署线上 Nodejs 项目
+电影网站/ReactNative App 后台/微信公众号/微信小程序后台等项目实战部署
+SSL 证书申请及 Nginx 证书集成提供 HTTPS 协议
+上线方案复盘总结
+这个新课程 全栈最后一公里 - Node.js项目的线上服务器部署与发布 已经在 4 月 10 日上线，感兴趣的同学们可以关注一下。
+
+作者： Scott 
+链接：http://www.imooc.com/article/17554
+来源：慕课网
+本文原创发布于慕课网 ，转载请注明出处，谢谢合作！
