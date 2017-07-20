@@ -4,7 +4,7 @@ MEANR (MongoDB, Express, AngularJS, Node.js, Redis) stack with Chef for DevOps a
 
 开发环境也可以不用mock，直接提供后端server服务，这也是全栈开发和之前前端开发的不同之处。 可以把node后端当成中间层，请求旧后端并包装后返回。
 
-
+MENV (Mongo, Express, Node, VueJS), Easily build full stack javascript web
 
 
 MENU
@@ -119,5 +119,20 @@ SSL 证书申请及 Nginx 证书集成提供 HTTPS 协议
 
 作者： Scott 
 链接：http://www.imooc.com/article/17554
+
+
+一、Node.js简介 
+
+      原本javascript纯粹是一个前端语言，干的基本上是让网页更丰富更炫的事情。不过Node.js出现后，javacript成为了前后端通吃的语言。比如网易的pomelo就是基于Node.js的游戏服务器引擎，全世界很多大公司也都开始使用Node.js构建他们的服务器后端。
+
+      Node.js有这么几个特点：
+
+      1、基于javacript语言，群众基础非常扎实，github上面70%的库都是javacript写的，那些star过万的库，也几乎清一色的javascript
+
+      2、基于google的V8 javascript解释引擎，速度非常快，作为服务器语言，可以不是最快的，但是一定不能是慢的
+
+      3、异步+回调的操作，使得Node.js的服务器的并发数目非常高
+
+      4、npm和社区庞大，Node.js的第三方库多到无法想象
 来源：慕课网
 本文原创发布于慕课网 ，转载请注明出处，谢谢合作！
