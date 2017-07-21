@@ -39,7 +39,7 @@ import reveal from 'reveal.js'
 import socket from 'socket.io-client'
 
 // let io = socket('http://172.17.21.1:3000')
-let io = socket('http://localhost:3000')
+let io = socket('http://192.168.1.108:3000')
 export default {
   name: 'app',
   components: {
