@@ -5,6 +5,16 @@ import App from './App'
 import 'reveal.js/css/reveal.css'
 import 'reveal.js/css/theme/black.css'
 
+import Hljs from 'highlight.js'
+
+
+Vue.directive('highlightjs', function() {
+  let blocks = this.el.querySelectorAll('pre code');
+  Array.prototype.forEach.call(blocks, Hljs.highlightBlock);
+})
+
+
+
 Vue.config.productionTip = false
 Vue.filter('date', (val, param) => {
   return val + '--' + param
@@ -16,3 +26,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+
