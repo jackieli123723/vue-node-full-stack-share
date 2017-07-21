@@ -56,18 +56,17 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown' 
+
 import pageItem from './components/page-item'
 import reveal from 'reveal.js'
 import socket from 'socket.io-client'
 
 // let io = socket('http://172.17.21.1:3000')
-let io = socket('http://192.168.1.108:3000')
+let io = socket('http://192.168.0.175/:3000')
 export default {
   name: 'app',
   components: {
-    pageItem,
-    VueMarkdown
+    pageItem
   },
   data () {
     return {
