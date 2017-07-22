@@ -1,5 +1,8 @@
 MEANR (MongoDB, Express, AngularJS, Node.js, Redis) stack with Chef for DevOps and Capistrano for Deployment
 
+
+区别在于express是服务器端的路由，也就是说需要向后台服务器发送请求，然后服务器来决定来render那个.html，这也就是最早的mvc架构模式，而前端的路由是将这一过程放在浏览器端，也就是前台写js代码控制，不在请求服务器，前台一般利用histroy和hash来控制，达到不刷新页面可以使显示内容发生变化，这样好处是js代码不发生变化(浏览器端可以维护一个稳定的model)；一般单页应用就是前台来控制路由，这样速度更快，用户体验更好。单页应用还将模板拿到了浏览器端，从而解放了服务端，服务端趋于服务化。
+
 全栈开发的不同之处
 
 开发环境也可以不用mock，直接提供后端server服务，这也是全栈开发和之前前端开发的不同之处。 可以把node后端当成中间层，请求旧后端并包装后返回。
